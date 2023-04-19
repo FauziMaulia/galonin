@@ -32,7 +32,7 @@ class SplashscreenWidget extends StatelessWidget {
                   visible: model.showTagline,
                   
                   child:FutureBuilder<String>(
-                    future: Future.delayed(Duration(seconds: 1 ), () {
+                    future: Future.delayed(const Duration(seconds: 1 ), () {
                       return model.tagline;
                     }),
                     builder: (context, snapshot) {
@@ -53,7 +53,7 @@ class SplashscreenWidget extends StatelessWidget {
               ],
             ),
             splashIconSize: 3000,
-            nextScreen: HomeScreen(),
+            nextScreen: LoginScreen(),
             splashTransition: SplashTransition.scaleTransition,
             backgroundColor: Colors.blue,
             duration: 3000, // Durasi splash screen
