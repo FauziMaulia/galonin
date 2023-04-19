@@ -1,20 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject/view/splash_screen.dart';
-void main() => runApp(const MyApp());
+import 'package:miniproject/view/login_screen.dart';
+import 'package:miniproject/view/home_screen.dart';
+import 'package:miniproject/viewmodel/provider/products_provider.dart';
+import 'package:miniproject/viewmodel/provider/user_provider.dart';
+import 'package:provider/provider.dart'; // Import Provider package
+import 'package:miniproject/viewmodel/provider/login_provider.dart'; // Import LoginProvider
+
+void main() => runApp(
+      // Wrap the MaterialApp with MultiProvider
+      MultiProvider(
+        providers: [
+          // Provide the LoginProvider to be used in the LoginScreen and its descendants
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (context) => UserViewModel()),
+        ChangeNotifierProvider(create: (context) => ProductViewModel()),
+          // Add other providers here if needed
+        ],
+        child: const MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Galonin',
       theme: ThemeData(
-        // Atur tema aplikasi sesuai kebutuhan
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashscreenWidget(), // Menggunakan widget splash screen sebagai halaman awal
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashscreenWidget(),
+        '/login': (context) => LoginScreen(),
+        '/home': (context) => const BottomNavigationWidget(),
+      },
     );
   }
 }
