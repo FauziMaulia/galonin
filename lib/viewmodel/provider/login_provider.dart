@@ -20,14 +20,14 @@ class LoginProvider extends ChangeNotifier {
       notifyListeners();
       // Panggil fungsi login dari LoginService dan tunggu selama 2 detik
       user = await  _loginService.login(loginModel);
-     
+
       return user;
     } catch (e) {
       // Set error message jika terjadi error saat login
       _errorMessage = 'Login failed. Please try again.';
       notifyListeners();
     } finally {
-       
+
       _isLoading = false;
       notifyListeners();
     }
