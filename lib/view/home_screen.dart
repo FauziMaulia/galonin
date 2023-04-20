@@ -8,8 +8,8 @@ import '../viewmodel/provider/home_provider.dart';
 import '../viewmodel/provider/login_provider.dart';
 
 
-class BottomNavigationWidget extends StatelessWidget {
-  const BottomNavigationWidget({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,6 +4,7 @@ class User {
   String nama;
   String role;
   String alamat;
+  String imageUrl;
 
   User({
     this.userId = 0,
@@ -11,5 +12,8 @@ class User {
     this.nama = '',
     this.role = '',
     this.alamat = '',
+    this.imageUrl=''
   });
+
+   
 }

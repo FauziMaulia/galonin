@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -38,6 +36,7 @@ class UserViewModel with ChangeNotifier {
           nama: userData['nama'],
           role: userData['role'],
           alamat: userData['alamat'],
+          imageUrl: userData['imageUrl']
         );
 
         // Mengatur error menjadi kosong

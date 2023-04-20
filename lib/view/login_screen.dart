@@ -6,6 +6,7 @@ import '../models/api/login_services.dart';
 import '../models/login.dart';
 import '../viewmodel/provider/login_provider.dart';
 import 'component/snackbar.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -97,11 +98,27 @@ class LoginScreen extends StatelessWidget {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 50),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/register');
+                                },
+                                child: const Text(
+                                  'Don\'t have an account? Register here',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 4,)
+                            ],
+                          ),
                           ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                 final loginProvider = Provider.of<LoginProvider>(context, listen: false);
                                  String email=_emailController.text;
                                  String Password = _passwordController.text;
                                  LoginModel loginModel = LoginModel(email: email, password: Password);
@@ -111,12 +128,16 @@ class LoginScreen extends StatelessWidget {
                                   _passwordController.clear();
                                   if(use != null &&  use !=0){
                                     SharedPreferences prefs = await SharedPreferences.getInstance();
-                                  await prefs.setInt('userId', use!);
+                                  await prefs.setInt('userId', use);
                                       if(context.mounted){ 
-                                        Navigator.pushReplacementNamed(context, '/home');
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                                          (route) => false,
+                                        );
                                       }
                                   }else{
-                                    showSnackbar(context, 'kosong ');
+                                    showSnackbar(context, 'Email/Password Salah');
                                   }
                                 }
                               }
