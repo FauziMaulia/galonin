@@ -10,13 +10,13 @@ class RegisterProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   String get errorMessage => _errorMessage;
 
-  Future<void> registerUser(String email, String nama, String role, String alamat, String password, BuildContext context) async {
+  Future<void> registerUser(String email, String nama, String role, String alamat, String password,String imageUrl, BuildContext context) async {
     try {
       _isLoading = true;
       _errorMessage = '';
       notifyListeners();
 
-      final response = await _registerService.registerUser(email, nama, role, alamat, password);
+      final response = await _registerService.registerUser(email, nama, role, alamat, password,imageUrl);
 
       if (response.status == 'success') {
         // ignore: use_build_context_synchronously

@@ -64,21 +64,71 @@ class UserDetailView extends StatelessWidget {
                 ),
               ),
               Expanded(
+                child: SingleChildScrollView(
                 child: Container(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 16),
-                      Text('ID Pengguna: ${userViewModel.user.userId}'),
                       const SizedBox(height: 8),
-                      Text('Email: ${userViewModel.user.email}'),
+                      TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          hintText: 'Masukkan email',
+                        ),
+                        controller: TextEditingController(text: userViewModel.user.email),
+                        onChanged: (value) {
+                          userViewModel.user.email = value;
+                        },
+                      ),
                       const SizedBox(height: 8),
-                      Text('Role: ${userViewModel.user.role}'),
+                      TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Role',
+                          hintText: 'Masukkan role',
+                        ),
+                        controller: TextEditingController(text: userViewModel.user.role),
+                        onChanged: (value) {
+                          userViewModel.user.role = value;
+                        },
+                      ),
                       const SizedBox(height: 8),
-                      Text('Alamat: ${userViewModel.user.alamat}'),
+                      TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'Alamat',
+                          hintText: 'Masukkan alamat',
+                        ),
+                        controller: TextEditingController(text: userViewModel.user.alamat),
+                        onChanged: (value) {
+                          userViewModel.user.alamat = value;
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        decoration: const InputDecoration(
+                          labelText: 'No. Handphone',
+                          hintText: 'Masukkan nomor handphone',
+                        ),
+                        controller: TextEditingController(text: userViewModel.user.noTelp),
+                        onChanged: (value) {
+                          userViewModel.user.noTelp = value;
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                      TextField(
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                          hintText: 'Masukkan password',
+                        ),
+                        controller: TextEditingController(text: userViewModel.user.password),
+                        onChanged: (value) {
+                          userViewModel.user.password = value;
+                        },
+                      ),
                     ],
                   ),
+                 ),
                 ),
               ),
             ],

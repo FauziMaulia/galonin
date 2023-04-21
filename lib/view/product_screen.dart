@@ -66,7 +66,7 @@ class ProductWidget extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 8.0),
                                   Text(                                
-                                    '${product.brand} ${product.size/1000} L',
+                                    '${product.nama}',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16.0,

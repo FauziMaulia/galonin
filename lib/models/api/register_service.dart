@@ -6,7 +6,7 @@ class RegisterService {
   final String _baseUrl = "http://192.168.2.106:3000/api";
   Dio _dio = Dio();
 
-  Future<Register> registerUser(String email, String nama, String role, String alamat, String password) async {
+  Future<Register> registerUser(String email, String nama, String role, String alamat, String password,String imageUrl) async {
     try {
       Response response = await _dio.post("$_baseUrl/register", data: {
         "email": email,
@@ -14,6 +14,7 @@ class RegisterService {
         "role": role,
         "alamat": alamat,
         "password": password,
+        "imageUrl": imageUrl
       });
       return Register.fromJson(response.data);
     } on DioError catch (e) {

@@ -17,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final String _role = 'Buyer';
   String _alamat = '';
   String _password = '';
+  String _imageUrl='';
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +77,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             },
                           ),
                           const SizedBox(height: 8.0),
-                          TextFormField(
+                           TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              labelText: 'Password',
+                              labelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'Password is required';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) => _password = value!,
+                        ),
+                        const SizedBox(height: 8.0),
+                        TextFormField(
                             keyboardType: TextInputType.emailAddress,
                             decoration: const InputDecoration(
                               labelText: 'Nama',
@@ -92,6 +116,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             validator: (value) {
                             if (value!.isEmpty) {
                               return 'Nama is required';
+                            }
+                            return null;
+                          },
+                          onSaved: (value) => _nama = value!,
+                          ),
+                          const SizedBox(height: 8.0),
+                        TextFormField(
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                              labelText: 'No HandPhone',
+                              labelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                              filled: true,
+                              fillColor: Colors.white,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                              ),
+                            ),
+                            validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'No Telefon is required';
                             }
                             return null;
                           },
@@ -120,11 +166,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onSaved: (value) => _alamat = value!,
                         ),
                         const SizedBox(height: 8.0),
-                           TextFormField(
+                        TextFormField(
                             keyboardType: TextInputType.emailAddress,
-                            obscureText: true,
                             decoration: const InputDecoration(
-                              labelText: 'Password',
+                              labelText: 'URL Image',
                               labelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                               filled: true,
                               fillColor: Colors.white,
@@ -134,13 +179,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                             ),
-                          validator: (value) {
+                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Password is required';
+                              return 'Image Url is required';
                             }
                             return null;
                           },
-                          onSaved: (value) => _password = value!,
+                          onSaved: (value) => _imageUrl = value!,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,7 +208,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               : () {
                                   if (_formKey.currentState!.validate()) {
                                     _formKey.currentState!.save();
-                                    registerProvider.registerUser(_email, _nama, _role, _alamat, _password, context);
+                                    registerProvider.registerUser(_email, _nama, _role, _alamat, _password,_imageUrl, context);
                                   }
                                 },
                           child: registerProvider.isLoading
