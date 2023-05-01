@@ -66,7 +66,7 @@ class ProductWidget extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 8.0),
                                   Text(                                
-                                    '${product.brand} ${product.size/1000} L',
+                                    '${product.nama}',
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16.0,
@@ -77,14 +77,14 @@ class ProductWidget extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        // Tambahkan produk ke keranjang
+                                        
                                       },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blueAccent,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(16.0),
                                         ),
-                                        minimumSize: Size(120, 25),
+                                        minimumSize: const Size(120, 25),
                                       ),
                                       child: const Text('+ Keranjang'),
                                     ),

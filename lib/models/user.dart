@@ -5,6 +5,8 @@ class User {
   String role;
   String alamat;
   String imageUrl;
+  String password;
+  String noTelp;
 
   User({
     this.userId = 0,
@@ -12,7 +14,9 @@ class User {
     this.nama = '',
     this.role = '',
     this.alamat = '',
-    this.imageUrl=''
+    this.imageUrl='',
+    this.password='',
+    this.noTelp=''
   });
 
    

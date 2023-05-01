@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../viewmodel/provider/home_provider.dart';
 import '../viewmodel/provider/login_provider.dart';
+import 'component/sidebar.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -20,14 +21,13 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           actions: [
             IconButton(
-              icon: const Icon(Icons.logout),
+              icon: const Icon(Icons.shopping_cart),
               onPressed: () {
-                // Panggil fungsi logout saat tombol logout ditekan
-                Provider.of<LoginProvider>(context, listen: false).logout();
-                Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+                Navigator.pushNamed(context, '/cart');
               },
             ),
           ]),
+          drawer: const Sidebar(),
         body: Consumer<BottomNavigationViewModel>(
           builder: (context, viewModel, _) {
             return Center(

@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../products.dart';
 
 class ProductService {
-  static const String apiUrl = 'http://192.168.2.106:3000/api/products';
+  static const String apiUrl = 'http://192.168.2.106:4000/api/products';
 
   Future<List<Product>> fetchProducts() async {
     try {

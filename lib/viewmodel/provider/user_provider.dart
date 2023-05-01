@@ -36,7 +36,9 @@ class UserViewModel with ChangeNotifier {
           nama: userData['nama'],
           role: userData['role'],
           alamat: userData['alamat'],
-          imageUrl: userData['imageUrl']
+          imageUrl: userData['imageUrl'],
+          password: userData['password'],
+          noTelp: userData['no_telp']
         );
 
         // Mengatur error menjadi kosong
