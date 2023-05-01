@@ -77,14 +77,14 @@ class ProductWidget extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0.0),
                                     child: ElevatedButton(
                                       onPressed: () {
-                                        // Tambahkan produk ke keranjang
+                                        
                                       },
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blueAccent,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(16.0),
                                         ),
-                                        minimumSize: Size(120, 25),
+                                        minimumSize: const Size(120, 25),
                                       ),
                                       child: const Text('+ Keranjang'),
                                     ),

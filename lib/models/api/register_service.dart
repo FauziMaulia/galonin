@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../register.dart';
 
 class RegisterService {
-  final String _baseUrl = "http://192.168.2.106:3000/api";
+  final String _baseUrl = "http://192.168.2.106:4000/api";
   Dio _dio = Dio();
 
   Future<Register> registerUser(String email, String nama, String role, String alamat, String password,String imageUrl) async {

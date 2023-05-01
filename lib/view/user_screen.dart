@@ -8,11 +8,12 @@ class UserDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<UserViewModel>(context, listen: false);
-    viewModel.getUserDetail();
+    
     return Consumer<UserViewModel>(
       builder: (context, userViewModel, child) {
         if (userViewModel.isLoading) {
+          final viewModel = Provider.of<UserViewModel>(context, listen: false);
+          viewModel.getUserDetail();
           return const Center(
             child: CircularProgressIndicator(),
           );
