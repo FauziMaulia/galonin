@@ -13,8 +13,6 @@ class LoginService with ChangeNotifier{
         apiUrl,
         data:loginModel.toJson()
       );
-      print('post');
-      print(response.data['data']['userId']);
 
       if (response.data != null) {
         return  response.data['data']['userId'];
@@ -22,7 +20,7 @@ class LoginService with ChangeNotifier{
         return response.statusCode;
       }
     } catch (e) {
-      print(e);
+
       return null;
     }
   } 

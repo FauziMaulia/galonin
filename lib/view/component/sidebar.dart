@@ -4,14 +4,24 @@ import 'package:provider/provider.dart';
 
 import '../../viewmodel/provider/login_provider.dart';
 
+// ignore: must_be_immutable
 class Sidebar extends StatelessWidget {
-  const Sidebar({Key? key}) : super(key: key);
+  UserViewModel userViewModel = UserViewModel();
+  Sidebar({Key? key}) : super(key: key);
 
+   @override
+  void initState() {
+    userViewModel.getUserDetail();
+  }
   @override
   Widget build(BuildContext context) {
+    userViewModel.getUserDetail();
     return Consumer<UserViewModel>(
       builder: (context, userViewModel, child) {
-        userViewModel.getUserDetail();
+        if(userViewModel.user.imageUrl.isEmpty){
+          userViewModel.getUserDetail();
+          return const CircularProgressIndicator();
+        }else{
         return Drawer(
           child: ListView(
             children: [
@@ -26,7 +36,9 @@ class Sidebar extends StatelessWidget {
                 leading: const Icon(Icons.person),
                 title: const Text('Profile'),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.pushNamed(context, '/profile');
+
                 },
               ),
               ListTile(
@@ -35,6 +47,7 @@ class Sidebar extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
                   Provider.of<LoginProvider>(context, listen: false).logout();
+                  userViewModel.deleteUser();
                   Navigator.pushNamedAndRemoveUntil(
                       context, '/login', (route) => false);
                 },
@@ -42,7 +55,9 @@ class Sidebar extends StatelessWidget {
             ],
           ),
         );
+      }
       },
     );
   }
+
 }
