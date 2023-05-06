@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject/view/cart_screen.dart';
+import 'package:miniproject/view/payment_screen.dart';
+import 'package:miniproject/view/product_detail_screen.dart';
 import 'package:miniproject/view/register_screen.dart';
+import 'package:miniproject/view/slip_screen.dart';
 import 'package:miniproject/view/splash_screen.dart';
 import 'package:miniproject/view/login_screen.dart';
 import 'package:miniproject/view/home_screen.dart';
 import 'package:miniproject/view/user_screen.dart';
 import 'package:miniproject/viewmodel/provider/cart_provider.dart';
+import 'package:miniproject/viewmodel/provider/order_provider.dart';
 import 'package:miniproject/viewmodel/provider/products_provider.dart';
 import 'package:miniproject/viewmodel/provider/register_provider.dart';
 import 'package:miniproject/viewmodel/provider/user_provider.dart';
@@ -22,6 +26,7 @@ void main() => runApp(
         ChangeNotifierProvider(create: (_) => ProductViewModel()),
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
         ChangeNotifierProvider(create: (_) => CartViewModel()),
+        ChangeNotifierProvider(create: (_) => OrdersProvider()),
           // Add other providers here if needed
         ],
         child: const MyApp(),
@@ -46,10 +51,10 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/home': (context) => const HomeScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/cart': (context) => const CartView(),
+        '/cart': (context) =>  CartView(),
         '/profile': (context) => const UserDetailView(),
-
-        
+        '/pesanan' : (context) => const OrderSuccessView(),
+        '/Struck' : (context) => const PaymentSlip(),
       },
     );
   }

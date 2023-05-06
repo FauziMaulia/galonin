@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:miniproject/view/product_screen.dart';
+import 'package:miniproject/view/all_product_screen.dart';
 import 'package:miniproject/view/user_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../viewmodel/provider/home_provider.dart';
-import '../viewmodel/provider/login_provider.dart';
+import 'product_screen.dart';
 import 'component/sidebar.dart';
+import 'orders_screen.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -18,7 +17,7 @@ class HomeScreen extends StatelessWidget {
     return ChangeNotifierProvider<BottomNavigationViewModel>(
       create: (_) => BottomNavigationViewModel(),
       child: Scaffold(
-        appBar: AppBar(
+        appBar: AppBar( 
           actions: [
             IconButton(
               icon: const Icon(Icons.shopping_cart),
@@ -27,7 +26,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
           ]),
-          drawer: const Sidebar(),
+          drawer: Sidebar(),
         body: Consumer<BottomNavigationViewModel>(
           builder: (context, viewModel, _) {
             return Center(
@@ -40,16 +39,12 @@ class HomeScreen extends StatelessWidget {
             return BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart),
-                  label: 'Product',
+                  icon: Icon(Icons.home),
+                  label: 'Home',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.history),
                   label: 'Riwayat',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Profile',
                 ),
               ],
               currentIndex: viewModel.selectedIndex,
@@ -69,11 +64,9 @@ class HomeScreen extends StatelessWidget {
   switch (index) {
     case 0:
    
-      return ProductWidget();
+      return HomePage();
     case 1:
-      return const Text('Riwayat'); // Ganti dengan widget atau halaman untuk Riwayat
-    case 2:
-      return UserDetailView(); // Ganti dengan widget atau halaman untuk Profile
+      return OrdersHistory(); // Ganti dengan widget atau halaman untuk Profile
     default:
       return const Text('Unknown Tab');
   }

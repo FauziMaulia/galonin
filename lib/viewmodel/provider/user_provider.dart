@@ -56,4 +56,7 @@ class UserViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
+  Future<void> deleteUser() async{
+    _user = User();
+  }
 }

@@ -6,7 +6,7 @@ class Cart {
   final String? brand;
   final int? size;
   final String? imageUrl;
-  final int price;
+  final int? price;
   final String? nama;
 
   Cart({
@@ -17,7 +17,7 @@ class Cart {
     this.brand,
     this.size,
     this.imageUrl,
-    required this.price,
+    this.price,
     this.nama,
   });
 
