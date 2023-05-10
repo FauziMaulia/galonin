@@ -12,6 +12,14 @@ class LoginProvider extends ChangeNotifier {
   String get errorMessage => _errorMessage;
   int? user;
   // Fungsi untuk melakukan login
+Future<void> checkLoginStatus(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? userId = prefs.getInt('userId');
+    if (userId != null) {
+      Navigator.pushReplacementNamed(context, '/home');
+    }
+  }
+
   Future<int?> login(LoginModel loginModel) async {
 
     try {

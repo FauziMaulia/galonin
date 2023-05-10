@@ -24,8 +24,10 @@ class CartView extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }else if (cartViewModel.cartItems.isEmpty) {
+            cartViewModel.fetchCartItems();
             return const EmptyCartPage();
           } else {
+            cartViewModel.fetchCartItems();
             return ListView.builder(
               itemCount: cartViewModel.cartItems.length,
               itemBuilder: (context, index) {

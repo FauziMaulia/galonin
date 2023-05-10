@@ -7,9 +7,4 @@ class SplashscreenModel extends ChangeNotifier {
 
   bool get showTagline => _showTagline; // Getter untuk nilai flag showTagline
 
-  // Method untuk mengatur flag showTagline
-  void toggleShowTagline() {
-    _showTagline = !_showTagline;
-    notifyListeners(); // Memberitahu listener bahwa terjadi perubahan pada model
-  }
 }

@@ -72,6 +72,7 @@ class UserDetailView extends StatelessWidget {
                     children: [
                       const SizedBox(height: 8),
                       TextField(
+                      readOnly: true,
                         decoration: const InputDecoration(
                           labelText: 'Email',
                           hintText: 'Masukkan email',
@@ -83,6 +84,7 @@ class UserDetailView extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                      readOnly: true,
                         decoration: const InputDecoration(
                           labelText: 'Role',
                           hintText: 'Masukkan role',
@@ -94,6 +96,7 @@ class UserDetailView extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                      readOnly: true,
                         decoration: const InputDecoration(
                           labelText: 'Alamat',
                           hintText: 'Masukkan alamat',
@@ -105,6 +108,7 @@ class UserDetailView extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                      readOnly: true,
                         decoration: const InputDecoration(
                           labelText: 'No. Handphone',
                           hintText: 'Masukkan nomor handphone',
@@ -116,6 +120,7 @@ class UserDetailView extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       TextField(
+                        readOnly: true,
                         obscureText: true,
                         decoration: const InputDecoration(
                           labelText: 'Password',

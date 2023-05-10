@@ -19,12 +19,12 @@ class UserViewModel with ChangeNotifier {
     try {
       // Set isLoading menjadi true saat melakukan request
       _isLoading = true;
-      notifyListeners();
+      
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int userId = prefs.getInt('userId') ?? 0;
       // Mengirim request GET ke API menggunakan UserService
       Response response = await _userService.getUser(userId);
-
+      notifyListeners();
       if (response.data['data'] != null) {
         // Jika response berhasil, mengambil data pengguna dari response
         Map<String, dynamic> userData = response.data['data'];
@@ -47,6 +47,7 @@ class UserViewModel with ChangeNotifier {
         // Jika response tidak berhasil, mengatur error sesuai response
         _error = response.data['message'];
       }
+       notifyListeners();
     } catch (error) {
       // Jika terjadi error saat melakukan request, mengatur error
       _error = 'Gagal mengambil data pengguna. $error';
@@ -58,5 +59,7 @@ class UserViewModel with ChangeNotifier {
   }
   Future<void> deleteUser() async{
     _user = User();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('userId');
   }
 }

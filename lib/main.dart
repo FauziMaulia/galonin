@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject/view/cart_screen.dart';
 import 'package:miniproject/view/payment_screen.dart';
-import 'package:miniproject/view/product_detail_screen.dart';
 import 'package:miniproject/view/register_screen.dart';
 import 'package:miniproject/view/slip_screen.dart';
 import 'package:miniproject/view/splash_screen.dart';
@@ -34,7 +33,8 @@ void main() => runApp(
     );
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  // ignore: non_constant_identifier_names
+  const MyApp({super.key, Key? Key});
 
   @override
   Widget build(BuildContext context) {

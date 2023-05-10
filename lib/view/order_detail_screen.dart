@@ -61,7 +61,7 @@ class OrderDetailPage extends StatelessWidget {
                   const SizedBox(height: 16.0),
                   const Text(
                     'Order Items',
-                    style: TextStyle(
+                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0,

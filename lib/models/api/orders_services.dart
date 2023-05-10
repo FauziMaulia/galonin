@@ -5,7 +5,7 @@ import '../order.dart';
 
 class OrderService {
   final Dio _dio = Dio();
-  final String url ='http://192.168.2.106:4000/api/orders'; 
+  final String url ='https://galonin.temanhorizon.com/api/orders'; 
 
   Future<List<Order>> getOrdersByUserId() async {
     try {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:miniproject/viewmodel/provider/user_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../models/user.dart';
 import '../../viewmodel/provider/login_provider.dart';
 
 // ignore: must_be_immutable
@@ -9,29 +10,36 @@ class Sidebar extends StatelessWidget {
   UserViewModel userViewModel = UserViewModel();
   Sidebar({Key? key}) : super(key: key);
 
-   @override
-  void initState() {
-    userViewModel.getUserDetail();
-  }
+
   @override
   Widget build(BuildContext context) {
-    userViewModel.getUserDetail();
-    return Consumer<UserViewModel>(
-      builder: (context, userViewModel, child) {
-        if(userViewModel.user.imageUrl.isEmpty){
-          userViewModel.getUserDetail();
-          return const CircularProgressIndicator();
-        }else{
-        return Drawer(
+     userViewModel.getUserDetail();
+    return  Drawer(
           child: ListView(
-            children: [
-              UserAccountsDrawerHeader(
-                accountName: Text(userViewModel.user.nama),
-                accountEmail: Text(userViewModel.user.email),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(userViewModel.user.imageUrl),
-                ),
-              ),
+            children: [ Consumer<UserViewModel>(
+                builder: (_, userViewModel, __) {
+                      userViewModel.getUserDetail();
+                  // ignore: unrelated_type_equality_checks
+                  if(userViewModel.user.nama.isNotEmpty){
+                    return UserAccountsDrawerHeader(
+                            accountName: Text(userViewModel.user.nama),
+                            accountEmail: Text(userViewModel.user.email),
+                            currentAccountPicture: CircleAvatar(
+                              backgroundImage: NetworkImage(userViewModel.user.imageUrl),
+                            ),
+                        );
+                    }else{
+                      userViewModel.getUserDetail();
+                      return const UserAccountsDrawerHeader(
+                            accountName: CircularProgressIndicator(),
+                            accountEmail: CircularProgressIndicator(),
+                            currentAccountPicture: CircleAvatar(
+                              
+                            ),
+                        );
+                    }
+                },
+            ),
               ListTile(
                 leading: const Icon(Icons.person),
                 title: const Text('Profile'),
@@ -56,8 +64,6 @@ class Sidebar extends StatelessWidget {
           ),
         );
       }
-      },
-    );
   }
 
-}
+

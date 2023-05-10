@@ -91,12 +91,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                             ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Password is required';
-                            }
-                            return null;
-                          },
+                         validator: (value) {
+                              if (value == '') {
+                                return 'Please enter your password';
+                              }
+                              if (value!.length < 6) {
+                                return 'Password must be at least 6 characters';
+                              }
+                              return null;
+                            },
                           onSaved: (value) => _password = value!,
                         ),
                         const SizedBox(height: 8.0),
@@ -135,12 +138,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                             ),
-                            validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'No Telefon is required';
-                            }
-                            return null;
-                          },
+                          validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'No Telefon is required';
+                              }
+                              if (value.length < 10 || value.length > 13) {
+                                return 'No Telefon is invalid';
+                              }
+                               // ignore: unnecessary_new
+                               RegExp regExp = new RegExp(
+                                    r"^(?:\+62|62|0)[2-9]{1}[0-9]{7,11}$",
+                                    caseSensitive: false,
+                                    multiLine: false,
+                                  );
+                                  if (!regExp.hasMatch(value)) {
+                                    return 'No Telefon is invalid';
+                                  }
+                              return null;
+                            },
                           onSaved: (value) => _nama = value!,
                           ),
                           const SizedBox(height: 8.0),

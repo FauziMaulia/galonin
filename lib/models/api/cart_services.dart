@@ -7,7 +7,7 @@ import '../cart.dart';
 
 
 class CartService {
-  final String apiUrl = 'http://192.168.2.106:4000/api/cart'; 
+  final String apiUrl = 'https://galonin.temanhorizon.com/api/cart'; 
 
   final dio = Dio();
 Future<void> incrementCart( int productId) async {
@@ -15,7 +15,7 @@ Future<void> incrementCart( int productId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int userId = prefs.getInt('userId')!;
       final response = await dio.patch(
-        'http://192.168.2.106:4000/api/cart/increment',
+        'https://galonin.temanhorizon.com/api/cart/increment',
         data: jsonEncode({
           'user_id': userId,
           'product_id': productId,
@@ -38,7 +38,7 @@ Future<void> incrementCart( int productId) async {
     int userId = prefs.getInt('userId')!;
     
       final response = await dio.patch(
-        'http://192.168.2.106:4000/api/cart/decrement',
+        'https://galonin.temanhorizon.com/api/cart/decrement',
         data: jsonEncode({
           'user_id': userId, 
           'product_id': productId,

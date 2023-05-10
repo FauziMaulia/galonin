@@ -20,6 +20,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LoginProvider>(
       builder: (context, loginProvider, child) {
+        loginProvider.checkLoginStatus(context);
         return Scaffold(
           backgroundColor: Colors.white,
           body: Stack(
